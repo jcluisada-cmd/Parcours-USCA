@@ -253,7 +253,6 @@ Elle pourra vous accompagner, assister aux consultations et sera votre porte-par
 <label class="chip"><input type="radio" name="pc_dir" value="Oui"><span>Oui</span></label>
 <label class="chip"><input type="radio" name="pc_dir" value="Non"><span>Non</span></label>
 </div></div>
-<div id="sig-confiance-block"></div>
 </div>
 </div>
 
@@ -304,24 +303,34 @@ Elle pourra vous accompagner, assister aux consultations et sera votre porte-par
 </div>
 
 <div class="card"><h3>Situation addictologique</h3>
+<div class="field"><label>Statut addictologique actuel</label><div class="chips">
+<label class="chip"><input type="radio" name="m_statut" value="Consommation active"><span>Consommation active</span></label>
+<label class="chip"><input type="radio" name="m_statut" value="Sevrage en cours"><span>Sevrage en cours</span></label>
+<label class="chip"><input type="radio" name="m_statut" value="Sevré — ttt équilibré"><span>Sevré — ttt équilibré</span></label>
+<label class="chip"><input type="radio" name="m_statut" value="Sevré — PEC comorbidités psy"><span>Sevré — PEC comorbidités psy</span></label>
+</div></div>
 <div class="field"><label>Motifs thérapeutiques</label><div class="chips">
-<label class="chip"><input type="checkbox" name="m_th" value="Tr. humeur"><span>Tr. humeur</span></label>
+<label class="chip"><input type="checkbox" name="m_th" value="Tr. Usage de Substances"><span>Tr. Usage de Substances</span></label>
+<label class="chip"><input type="checkbox" name="m_th" value="Épisode Dépressif"><span>Épisode Dépressif</span></label>
 <label class="chip"><input type="checkbox" name="m_th" value="Tr. anxieux"><span>Tr. anxieux</span></label>
+<label class="chip"><input type="checkbox" name="m_th" value="Tr. humeur (bipolaire)"><span>Tr. humeur (bipolaire)</span></label>
 <label class="chip"><input type="checkbox" name="m_th" value="Psychose"><span>Psychose</span></label>
 <label class="chip"><input type="checkbox" name="m_th" value="Tr. personnalité"><span>Tr. personnalité</span></label>
-<label class="chip"><input type="checkbox" name="m_th" value="Substance"><span>Substance</span></label>
 <label class="chip"><input type="checkbox" name="m_th" value="TCA"><span>TCA</span></label>
-<label class="chip"><input type="checkbox" name="m_th" value="Burn-out"><span>Burn-out</span></label>
+<label class="chip"><input type="checkbox" name="m_th" value="Tr. sommeil"><span>Tr. sommeil</span></label>
+<label class="chip"><input type="checkbox" name="m_th" value="TSPT"><span>TSPT</span></label>
+<label class="chip"><input type="checkbox" name="m_th" value="TDAH"><span>TDAH</span></label>
+<label class="chip"><input type="checkbox" name="m_th" value="Autre"><span>Autre</span></label>
 </div></div>
 <table class="sub-table"><thead><tr><th>Substance</th><th>Actuel</th><th>Détail / quantité</th><th>Changement</th></tr></thead><tbody id="sub-tbody"></tbody></table>
-<div class="row"><div class="field"><label>Idées suicidaires</label><div class="chips">
-<label class="chip"><input type="radio" name="m_is" value="Oui"><span>Oui</span></label>
-<label class="chip"><input type="radio" name="m_is" value="Non"><span>Non</span></label>
-</div></div>
-<div class="field"><label>Tr. comportement</label><div class="chips">
-<label class="chip"><input type="radio" name="m_tc" value="Oui"><span>Oui</span></label>
-<label class="chip"><input type="radio" name="m_tc" value="Non"><span>Non</span></label>
-</div></div></div>
+<div class="field"><label>Idées suicidaires</label><div class="chips">
+<label class="chip"><input type="radio" name="m_is" value="Oui" onchange="document.getElementById('is_comment').style.display='block'"><span>Oui</span></label>
+<label class="chip"><input type="radio" name="m_is" value="Non" onchange="document.getElementById('is_comment').style.display='none'"><span>Non</span></label>
+</div><div id="is_comment" style="display:none;margin-top:.4rem"><input type="text" id="m_is_detail" placeholder="Précisez : actives/passives, plan, urgence…" style="border-color:var(--red)"></div></div>
+<div class="field"><label>Troubles du comportement (agressivité, hétéro-agressivité)</label><div class="chips">
+<label class="chip"><input type="radio" name="m_tc" value="Oui" onchange="document.getElementById('tc_comment').style.display='block'"><span>Oui</span></label>
+<label class="chip"><input type="radio" name="m_tc" value="Non" onchange="document.getElementById('tc_comment').style.display='none'"><span>Non</span></label>
+</div><div id="tc_comment" style="display:none;margin-top:.4rem"><input type="text" id="m_tc_detail" placeholder="Précisez : contexte, type, fréquence…"></div></div>
 </div>
 
 <div class="card"><h3>Antécédents & état clinique</h3>
@@ -332,9 +341,11 @@ Elle pourra vous accompagner, assister aux consultations et sera votre porte-par
 <div class="field"><label>État psychique actuel</label><textarea id="m_etat_p" rows="2"></textarea></div>
 <div class="field"><label>État somatique actuel</label><textarea id="m_etat_s" rows="2"></textarea></div>
 <div class="field"><label>Traitements en cours</label><div class="hint">Joindre la dernière ordonnance</div><textarea id="m_ttt" rows="2"></textarea></div>
-<div class="row3"><div class="field"><label>Poids (kg)</label><input type="text" id="m_poids"></div>
-<div class="field"><label>Taille (cm)</label><input type="text" id="m_taille"></div>
-<div class="field"><label>Allergies</label><input type="text" id="m_allergies" value="Aucune connue"></div></div>
+<div class="field"><label>Allergies</label><input type="text" id="m_allergies" value="Aucune connue"></div>
+</div>
+
+<div class="card"><h3>Recommandations pour la continuité de la prise en charge</h3>
+<div class="field"><label>Recommandations</label><textarea id="m_recos" rows="3"></textarea></div>
 </div>
 
 <div class="card"><h3>📎 Documents médicaux</h3>
@@ -408,7 +419,10 @@ function init() {
   // Populate structure dropdown
   const sel = document.getElementById('struct_select');
   for (const [k,v] of Object.entries(STRUCTS)) {
-    const opt = document.createElement('option'); opt.value=k; opt.textContent=`${v.nom} — ${v.ville}`; sel.appendChild(opt);
+    const confirmed = v.engagement || (v.checklist && v.checklist.length > 0);
+    const opt = document.createElement('option'); opt.value=k;
+    opt.textContent = confirmed ? `${v.nom} — ${v.ville}` : `${v.nom} — ${v.ville} (Infos à confirmer)`;
+    sel.appendChild(opt);
   }
   // Build progress
   const steps = ['Identité','Couverture','Situation','Personnes','Engagement','Finaliser'];
@@ -421,7 +435,6 @@ function init() {
     return `<tr><td>${s}</td><td><input type="checkbox" name="sub_a" value="${s}"></td><td><input type="text" name="sub_d_${k}"></td><td><select name="sub_c_${k}"><option>—</option><option>Oui</option><option>Non</option></select></td></tr>`;
   }).join('');
   // Build signature blocks
-  buildSigBlock('sig-confiance-block','confiance','Signature de désignation');
   buildSigBlock('sig-engagement-block','engagement','Signature d\'engagement');
   // Build generate zones
   // Build generate zones (separate)
@@ -456,7 +469,7 @@ function init() {
       <p style="font-size:.7rem;color:var(--ink-muted)">Joignez le fichier ZIP à votre email.</p>
     </div>`;
   // Init sig pads after render
-  setTimeout(() => { initSigPad('confiance'); initSigPad('engagement'); }, 500);
+  setTimeout(() => { initSigPad('engagement'); }, 500);
   // Init engagement text
   updateEngagement(null);
   // Scroll spy for patient progress
@@ -657,11 +670,11 @@ function collectM() {
   });
   return {spe:R('m_spe'),nom:V('m_nom'),prenom:V('m_prenom'),etab:V('m_etab'),tel:V('m_tel'),email:V('m_email'),
     mt_nom:V('mt_nom'),mt_tel:V('mt_tel'),mode:R('m_mode'),obj:V('m_obj'),
-    th:C('m_th'),subs,is:R('m_is'),tc:R('m_tc'),
+    statut:R('m_statut'),th:C('m_th'),subs,is:R('m_is'),is_detail:V('m_is_detail'),tc:R('m_tc'),tc_detail:V('m_tc_detail'),
     atcd_a:V('m_atcd_a'),atcd_s:V('m_atcd_s'),atcd_p:V('m_atcd_p'),
     histoire:V('m_histoire'),
     etat_p:V('m_etat_p'),etat_s:V('m_etat_s'),ttt:V('m_ttt'),
-    poids:V('m_poids'),taille:V('m_taille'),allergies:V('m_allergies'),
+    allergies:V('m_allergies'),recos:V('m_recos'),
     date_adm:V('m_date_adm'),date:new Date().toLocaleDateString('fr-FR')};
 }
 
@@ -686,7 +699,7 @@ function buildReview() {
   // Checklist
   const items=[['Pièce identité (R)',!!uploads.id_r],['Pièce identité (V)',!!uploads.id_v],
     ['Carte mutuelle',!!uploads.mut_r],
-    ['Personne confiance signée',!!getSigData('confiance')],['Engagement signé',!!getSigData('engagement')]];
+    ['Engagement signé',!!getSigData('engagement')]];
   if (s.checklist?.length) s.checklist.forEach(c => { if (!items.find(i=>i[0]===c)) items.push([c,false]); });
   document.getElementById('patient-checklist').innerHTML = `<div class="card"><h3>✅ Checklist</h3>${items.map(([l,ok])=>
     `<div class="checklist-item"><span class="check ${ok?'check-ok':'check-miss'}">${ok?'✓':'✗'}</span>${l}</div>`).join('')}</div>`;
@@ -698,15 +711,42 @@ function buildReview() {
 }
 
 // ============================================================
-// PDF HELPERS
+// PDF HELPERS — modernized layout
 // ============================================================
-const DK=[16,39,67],TL=[26,107,106],GR=[90,110,125],LT=[213,236,236],WP=210;
-function mkDoc(title,subtitle){const{jsPDF}=window.jspdf;const d=new jsPDF({unit:'mm',format:'a4'});d.setFillColor(...DK);d.rect(0,0,WP,22,'F');try{d.addImage(LOGO_PDF,'PNG',6,2,18,18);}catch(e){}d.setTextColor(255,255,255);d.setFontSize(11);d.setFont('helvetica','bold');d.text(title,WP/2+10,9,{align:'center'});d.setFontSize(7.5);d.setFont('helvetica','normal');d.text(subtitle,WP/2+10,16,{align:'center'});d.setTextColor(...DK);return d;}
-function sec(d,t,y){d.setFillColor(...TL);d.rect(15,y-3.5,WP-30,5.5,'F');d.setTextColor(255,255,255);d.setFontSize(7.5);d.setFont('helvetica','bold');d.text(t,17,y);d.setTextColor(...DK);return y+4.5;}
-function fl(d,l,v,y){d.setFontSize(7);d.setFont('helvetica','bold');d.setTextColor(...DK);d.text(l,17,y);d.setFont('helvetica','normal');d.setTextColor(...GR);d.text((Array.isArray(v)?v.join(', '):(v||'—')).substring(0,85),52,y);return y+4;}
-function ml(d,l,t,y){d.setFontSize(7);d.setFont('helvetica','bold');d.setTextColor(...DK);d.text(l,17,y);y+=3.5;d.setFont('helvetica','normal');d.setTextColor(...GR);const ls=d.splitTextToSize(t||'—',WP-38);d.text(ls,17,y);return y+ls.length*3.2+2;}
-function footer(d){d.setFillColor(...LT);d.rect(0,288,WP,9,'F');d.setFontSize(6);d.setTextColor(...GR);d.text('USCA Pitié-Salpêtrière (AP-HP) — addicto.psl@aphp.fr',WP/2,292,{align:'center'});}
-
+const DK=[16,39,67],TL=[26,107,106],GR=[100,120,135],LT=[230,242,242],WP=210;
+function mkDoc(title,subtitle){
+  const{jsPDF}=window.jspdf;const d=new jsPDF({unit:'mm',format:'a4'});
+  // Header: gradient-like bar
+  d.setFillColor(...DK);d.rect(0,0,WP,20,'F');
+  try{d.addImage(LOGO_PDF,'PNG',5,2,27,15);}catch(e){}
+  d.setTextColor(255,255,255);d.setFontSize(10);d.setFont('helvetica','bold');
+  d.text(title,WP/2+12,8,{align:'center'});
+  d.setFontSize(7);d.setFont('helvetica','normal');d.setTextColor(200,220,225);
+  d.text(subtitle,WP/2+12,14,{align:'center'});
+  d.setTextColor(...DK);return d;
+}
+function sec(d,t,y){
+  d.setFillColor(230,242,242);d.rect(15,y-3,WP-30,5,'F');
+  d.setDrawColor(...TL);d.setLineWidth(0.4);d.line(15,y+2,WP-15,y+2);
+  d.setTextColor(...TL);d.setFontSize(7);d.setFont('helvetica','bold');
+  d.text(t.toUpperCase(),17,y);d.setTextColor(...DK);return y+5;
+}
+function fl(d,l,v,y){
+  d.setFontSize(6.8);d.setFont('helvetica','normal');d.setTextColor(...GR);d.text(l,17,y);
+  d.setFont('helvetica','bold');d.setTextColor(...DK);
+  const val=Array.isArray(v)?v.join(', '):(v||'—');
+  d.text(val.substring(0,90),50,y);return y+3.8;
+}
+function ml(d,l,t,y){
+  if(l){d.setFontSize(6.8);d.setFont('helvetica','normal');d.setTextColor(...GR);d.text(l,17,y);y+=3.2;}
+  d.setFont('helvetica','normal');d.setFontSize(6.8);d.setTextColor(...DK);
+  const ls=d.splitTextToSize(t||'—',WP-36);d.text(ls,17,y);return y+ls.length*3+1.5;
+}
+function footer(d){
+  d.setDrawColor(...TL);d.setLineWidth(0.3);d.line(15,286,WP-15,286);
+  d.setFontSize(5.5);d.setTextColor(...GR);
+  d.text('USCA / ELSA — Pitié-Salpêtrière (AP-HP) — addicto.psl@aphp.fr — '+new Date().toLocaleDateString('fr-FR'),WP/2,290,{align:'center'});
+}
 function addToZip(zip,keys,idx){for(const[k,f]of Object.entries(uploads)){if(!f||!keys.includes(k))continue;const ext=f.type.includes('pdf')?'.pdf':f.type.includes('png')?'.png':'.jpg';const bin=atob(f.data.split(',')[1]);const arr=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);zip.file(`0${idx}_${k}${ext}`,arr);idx++;}return idx;}
 function addMulti(zip,key,idx){const files=multiUploads[key];if(!files||!files.length)return idx;files.forEach((f,i)=>{const ext=f.type.includes('pdf')?'.pdf':f.type.includes('png')?'.png':'.jpg';const bin=atob(f.data.split(',')[1]);const arr=new Uint8Array(bin.length);for(let j=0;j<bin.length;j++)arr[j]=bin.charCodeAt(j);zip.file(`0${idx}_${key}_${i+1}${ext}`,arr);idx++;});return idx;}
 function dlZip(zip,name){zip.generateAsync({type:'blob'}).then(blob=>{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href);showToast('✓ ZIP téléchargé !');});}
@@ -716,31 +756,42 @@ function dlZip(zip,name){zip.generateAsync({type:'blob'}).then(blob=>{const a=do
 // ============================================================
 function generatePatient(){
   const p=collectP(),zip=new JSZip(),st=STRUCTS[p.postcure]||{nom:'Non précisée'};
-  const d1=mkDoc('VOLET ADMINISTRATIF',`${p.nom} ${p.prenom} • ${p.date} • ${st.nom}`);
-  let y=28;
-  y=sec(d1,'IDENTITÉ',y);y=fl(d1,'Nom :',`${p.nom} ${p.prenom}`,y);y=fl(d1,'DDN :',`${p.ddn} à ${p.lieu}`,y);
-  y=fl(d1,'Sexe :',p.sexe,y);y=fl(d1,'Adresse :',`${p.adresse}, ${p.cp} ${p.ville}`,y);
-  y=fl(d1,'Tél / Email :',`${p.tel} / ${p.email}`,y);y+=2;
-  y=sec(d1,'COUVERTURE SOCIALE',y);y=fl(d1,'N° SS :',p.ss,y);y=fl(d1,'Caisse / ALD :',`${p.caisse} / ALD: ${p.ald}`,y);
-  y=fl(d1,'Mutuelle :',`${p.mut_type} — ${p.mut_nom} (${p.mut_num})`,y);y+=2;
-  y=sec(d1,'SITUATION SOCIALE',y);y=fl(d1,'Famille :',p.fam,y);y=fl(d1,'Enfants :',`${p.enfants} (${p.charge} à charge)`,y);
-  y=fl(d1,'Emploi :',p.emploi,y);y=fl(d1,'Ressources :',p.ress,y);y=fl(d1,'Logement :',p.log,y);y=fl(d1,'Protection :',p.prot,y);y+=2;
-  y=sec(d1,'PERSONNE À PRÉVENIR',y);y=fl(d1,'Nom :',`${p.pp_nom} ${p.pp_prenom} (${p.pp_lien})`,y);y=fl(d1,'Tél :',p.pp_tel,y);y+=2;
-  y=sec(d1,'PERSONNE DE CONFIANCE',y);y=fl(d1,'Nom :',p.pc_nom,y);y=fl(d1,'Tél / Email :',`${p.pc_tel} / ${p.pc_email}`,y);
-  y=fl(d1,'Directives :',p.pc_dir,y);
-  const sigC=getSigData('confiance');
-  if(sigC){try{d1.addImage(sigC,'PNG',17,y,45,18);}catch(e){}y+=20;}
-  y+=2;y=sec(d1,'POST-CURE',y);y=fl(d1,'Structure :',st.nom,y);y=fl(d1,'Ville :',st.ville||'',y);
+  const d1=mkDoc('VOLET ADMINISTRATIF',`${p.prenom} ${p.nom} — ${st.nom}`);
+  let y=25;
+  y=sec(d1,'Identité',y);
+  y=fl(d1,'Nom / Prénom',`${p.nom} ${p.prenom}`,y);
+  y=fl(d1,'DDN / Lieu',`${p.ddn} — ${p.lieu}`,y);
+  y=fl(d1,'Sexe',p.sexe,y);
+  y=fl(d1,'Adresse',`${p.adresse}, ${p.cp} ${p.ville}`,y);
+  y=fl(d1,'Tél / Email',`${p.tel} — ${p.email}`,y);y+=1.5;
+  y=sec(d1,'Couverture sociale',y);
+  y=fl(d1,'N° SS',p.ss,y);
+  y=fl(d1,'Caisse / ALD',`${p.caisse} — ALD: ${p.ald}`,y);
+  y=fl(d1,'Complémentaire',`${p.mut_type} ${p.mut_nom} (${p.mut_num})`,y);y+=1.5;
+  y=sec(d1,'Situation sociale',y);
+  y=fl(d1,'Famille',`${p.fam} — ${p.enfants} enfant(s)`,y);
+  y=fl(d1,'Emploi',p.emploi,y);
+  y=fl(d1,'Ressources',p.ress,y);
+  y=fl(d1,'Logement',p.log,y);
+  y=fl(d1,'Protection',p.prot,y);y+=1.5;
+  y=sec(d1,'Personne à prévenir',y);
+  y=fl(d1,'Nom',`${p.pp_nom} ${p.pp_prenom} (${p.pp_lien}) — ${p.pp_tel}`,y);y+=1.5;
+  y=sec(d1,'Personne de confiance',y);
+  y=fl(d1,'Nom',p.pc_nom,y);
+  y=fl(d1,'Contact',`${p.pc_tel} — ${p.pc_email}`,y);y+=1.5;
+  y=sec(d1,'Post-cure souhaitée',y);
+  y=fl(d1,'Structure',`${st.nom} — ${st.ville||''}`,y);
   footer(d1);
   zip.file(`01_Administratif_${p.nom}.pdf`,d1.output('blob'));
+  // Engagement
   const sigE=getSigData('engagement');
   if(sigE){
-    const d3=mkDoc('ENGAGEMENT THÉRAPEUTIQUE',st.nom);let y3=28;
-    d3.setFontSize(7.5);d3.setFont('helvetica','normal');d3.setTextColor(...GR);
-    const eng=st.engagement||DEFAULT_ENGAGEMENT;const ls=d3.splitTextToSize(eng,WP-34);d3.text(ls,17,y3);y3+=ls.length*3.2+8;
-    d3.setFont('helvetica','bold');d3.setTextColor(...DK);
-    d3.text(`Nom : ${p.nom} ${p.prenom}`,17,y3);y3+=5;d3.text(`Date : ${p.date}`,17,y3);y3+=7;
-    try{d3.addImage(sigE,'PNG',17,y3,55,22);}catch(e){}
+    const d3=mkDoc('ENGAGEMENT THÉRAPEUTIQUE',st.nom);let y3=25;
+    d3.setFontSize(7);d3.setFont('helvetica','normal');d3.setTextColor(...DK);
+    const eng=st.engagement||DEFAULT_ENGAGEMENT;const ls=d3.splitTextToSize(eng,WP-34);d3.text(ls,17,y3);y3+=ls.length*3+6;
+    d3.setFont('helvetica','bold');
+    d3.text(`${p.prenom} ${p.nom}`,17,y3);y3+=4;d3.text(`Le ${p.date}`,17,y3);y3+=6;
+    try{d3.addImage(sigE,'PNG',17,y3,50,20);}catch(e){}
     footer(d3);zip.file(`02_Engagement_${p.nom}.pdf`,d3.output('blob'));
   }
   let idx=3;idx=addToZip(zip,['id_r','id_v','mut_r','mut_v'],idx);idx=addMulti(zip,'patient_autres',idx);
@@ -752,23 +803,48 @@ function generatePatient(){
 // ============================================================
 function generateMedecin(){
   const p=collectP(),m=collectM(),zip=new JSZip(),st=STRUCTS[p.postcure]||{nom:'Non précisée'};
-  const d2=mkDoc('VOLET MÉDICAL — CONFIDENTIEL',`${p.nom} ${p.prenom} • ${m.date} • ${st.nom}`);
-  let y2=28;
-  y2=sec(d2,'MÉDECIN ADRESSEUR',y2);y2=fl(d2,'Dr :',`${m.nom} ${m.prenom} (${m.spe})`,y2);
-  y2=fl(d2,'Établissement :',m.etab,y2);y2=fl(d2,'Contact :',`${m.tel} / ${m.email}`,y2);
-  y2=fl(d2,'MT :',`${m.mt_nom} — ${m.mt_tel}`,y2);y2=fl(d2,'Demande :',`${m.mode} — ${m.obj?.substring(0,60)}`,y2);y2+=2;
-  y2=sec(d2,'ADDICTOLOGIE',y2);y2=fl(d2,'Motifs :',m.th,y2);
-  y2=fl(d2,'Substances :',m.subs.map(s=>`${s.sub}${s.det?' ('+s.det+')':''}`),y2);
-  y2=fl(d2,'IS / TC :',`IS: ${m.is} / TC: ${m.tc}`,y2);y2+=2;
-  y2=sec(d2,'ANTÉCÉDENTS',y2);
-  y2=ml(d2,'Addicto :',m.atcd_a,y2);y2=ml(d2,'Somato :',m.atcd_s,y2);y2=ml(d2,'Psy :',m.atcd_p,y2);
-  if(y2>230){d2.addPage();y2=20;}
-  y2=sec(d2,'HISTOIRE DE LA MALADIE',y2);y2=ml(d2,'',m.histoire,y2);
-  if(y2>240){d2.addPage();y2=20;}
-  y2=sec(d2,'ÉTAT ACTUEL',y2);y2=ml(d2,'Psychique :',m.etat_p,y2);y2=ml(d2,'Somatique :',m.etat_s,y2);
-  y2=ml(d2,'Traitements :',m.ttt,y2);
-  y2=fl(d2,'Poids/Taille :',`${m.poids} kg / ${m.taille} cm`,y2);y2=fl(d2,'Allergies :',m.allergies,y2);
-  y2=fl(d2,'Date adm. souhaitée :',m.date_adm,y2);
+  const d2=mkDoc('VOLET MÉDICAL — CONFIDENTIEL',`${p.prenom} ${p.nom} — ${st.nom}`);
+  let y=25;
+  // Patient identity
+  d2.setFillColor(245,249,249);d2.roundedRect(15,y-2,WP-30,10,2,2,'F');
+  d2.setFontSize(9);d2.setFont('helvetica','bold');d2.setTextColor(...DK);
+  d2.text(`${p.prenom} ${p.nom}`,20,y+2);
+  d2.setFontSize(7);d2.setFont('helvetica','normal');d2.setTextColor(...GR);
+  d2.text(`Né(e) le ${p.ddn}`,20,y+6);
+  d2.text(`${st.nom}`,WP-20,y+2,{align:'right'});
+  d2.text(`Date souhaitée: ${m.date_adm||'—'}`,WP-20,y+6,{align:'right'});
+  y+=12;
+  // Médecin
+  y=sec(d2,'Médecin adresseur',y);
+  y=fl(d2,'Dr',`${m.nom} ${m.prenom} — ${m.spe}`,y);
+  y=fl(d2,'Établissement',m.etab,y);
+  y=fl(d2,'MT',`${m.mt_nom} ${m.mt_tel?'— '+m.mt_tel:''}`,y);
+  y=fl(d2,'Demande',`${m.mode} — ${m.obj?.substring(0,70)||'—'}`,y);y+=1.5;
+  // Addictologie
+  y=sec(d2,'Situation addictologique',y);
+  y=fl(d2,'Statut',m.statut,y);
+  y=fl(d2,'Motifs',m.th,y);
+  if(m.subs.length){y=fl(d2,'Substances',m.subs.map(s=>`${s.sub}${s.det?' ('+s.det+')':''}`),y);}
+  const isText=m.is==='Oui'?`Oui${m.is_detail?' — '+m.is_detail:''}`:m.is;
+  const tcText=m.tc==='Oui'?`Oui${m.tc_detail?' — '+m.tc_detail:''}`:m.tc;
+  y=fl(d2,'Idées suicidaires',isText,y);
+  y=fl(d2,'Tr. comportement',tcText,y);y+=1.5;
+  // ATCD
+  y=sec(d2,'Antécédents',y);
+  if(m.atcd_a){y=ml(d2,'Addicto :',m.atcd_a,y);}
+  if(m.atcd_s){y=ml(d2,'Somato :',m.atcd_s,y);}
+  if(m.atcd_p){y=ml(d2,'Psy :',m.atcd_p,y);}
+  // Histoire
+  if(m.histoire){if(y>235){d2.addPage();y=20;}y=sec(d2,'Histoire de la maladie',y);y=ml(d2,'',m.histoire,y);}
+  // État actuel
+  if(y>245){d2.addPage();y=20;}
+  y=sec(d2,'État actuel',y);
+  if(m.etat_p){y=ml(d2,'Psychique :',m.etat_p,y);}
+  if(m.etat_s){y=ml(d2,'Somatique :',m.etat_s,y);}
+  if(m.ttt){y=ml(d2,'Traitements :',m.ttt,y);}
+  y=fl(d2,'Allergies',m.allergies,y);
+  // Recos
+  if(m.recos){if(y>250){d2.addPage();y=20;}y=sec(d2,'Recommandations — continuité PEC',y);y=ml(d2,'',m.recos,y);}
   footer(d2);
   zip.file(`01_Medical_${p.nom}_CONFIDENTIEL.pdf`,d2.output('blob'));
   let idx=2;idx=addToZip(zip,['ordo','bio','crh'],idx);idx=addMulti(zip,'medecin_autres',idx);
